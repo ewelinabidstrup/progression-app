@@ -29,10 +29,10 @@ def load_model():
 model = load_model()
 
 # Predict button
-i# Predict button
+# Predict button
 if st.button("Predict", type="primary"):
     # Create input array with the actual numeric values entered by user
-     input_data = np.array([[b1tp53, b2mdm2, cfdnab3]], dtype=np.float32)
+    input_data = np.array([[b1tp53, b2mdm2, cfdnab3]], dtype=np.float32)
     
     # Apply the same preprocessing as training: log1p transformation
     input_data = np.log1p(input_data)
@@ -41,7 +41,10 @@ if st.button("Predict", type="primary"):
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0]
     
-    if prediction > 0.5:
+    # Display results
+    st.divider()
+    
+    if prediction == 1:
         st.error(f"⚠️ Prediction: Progression likely")
     else:
         st.success(f"✅ Prediction: Progression unlikely")
